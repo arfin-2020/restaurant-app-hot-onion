@@ -1,12 +1,24 @@
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [changeHeader, setChangeHeader] = useState(false)
+  
+  const onChangeHeader = () => {
+    if (window.scrollY >= 50) {
+        setChangeHeader(true)
+    } else {
+        setChangeHeader(false)
+    }
+}
+
+//change header by scrolling
+window.addEventListener('scroll', onChangeHeader)
   return (
-    <>
-      <Popover className="relative bg-white">
+    <section className={changeHeader ? "bg-white fixed z-50 top-0 left-0 w-full shadow-md transition duration-500" : "bg-transparent fixed z-50 top-0 left-0 w-full transition duration-500"}>
+      <Popover className=" bg-white sticky top-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
@@ -100,7 +112,7 @@ const Header = () => {
           </Popover.Panel>
         </Transition>
       </Popover>
-    </>
+    </section>
   );
 };
 

@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div className={`${classes.headerBanner}`}>
         <div className="flex flex-col items-center justify-center h-full">
-          <h1 className="text-center text-3xl md:text-4xl lg:text-5xl poppins font-semibold text-gray-700">
+          <h1 className="text-center text-3xl md:text-4xl lg:text-5xl poppins font-semibold text-white ">
             Best food waiting for your belly
           </h1>
 
