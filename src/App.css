@@ -44,8 +44,8 @@ body {
     transform: rotate(360deg);
   }
 }
-.banner {
-  background-image: url("./assets/bannerbackground.png");
+.banner2 {
+  background-image: url("./assets/orderbanner.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -72,4 +72,36 @@ body {
   background-color: rgba(255, 255, 255, 0.57);
   border-radius: 12px;
   border: 1px solid rgba(209, 213, 219, 0.3);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
