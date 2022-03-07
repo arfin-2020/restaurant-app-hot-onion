@@ -3,14 +3,14 @@ import { useOrder } from '../context/OrderProvider';
 
 const OrderPrice = () => {
     const {order} = useOrder();
-    console.log("order-------", order);
+    // console.log("order-------", order);
 
     let allPrice = 0;
 
     for(var i = 0; i<order.length; i++){
         allPrice += order[i].price * order[i].quantity;
     }
-    console.log(allPrice);
+    // console.log(allPrice);
 
     const subTotal = parseFloat(allPrice.toFixed(2));
     const tax = parseFloat((allPrice % 5).toFixed(2));

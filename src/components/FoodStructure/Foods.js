@@ -7,7 +7,7 @@ const Foods = () => {
   const [menuTab, setMenuTab] = useState("Breakfast");
   const [loading, setLoading] = useState(false);
   const [foods] = UseFetch([]);
-  console.log(foods);
+  // console.log(foods);
 
   useEffect(() => {
     setLoading(true);

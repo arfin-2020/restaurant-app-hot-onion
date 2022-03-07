@@ -17,7 +17,7 @@ const OrderSuccessfull = () => {
 
 
     return (
-        <div className=" h-screen banner2">
+        <div className=" h-screen banner2 overflow-hidden">
             <div className="max-w-screen-xl py-20 mx-auto px-6">
                 {loading ? (
                     <div className="flex flex-col items-center justify-center h-3/4 pt-24">

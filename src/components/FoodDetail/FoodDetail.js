@@ -12,7 +12,7 @@ const FoodDetail = () => {
   const [disabled, setDisabled] = useState(false);
   const [foods] = UseFetch([]);
 
-  console.log("Food item--------", foods);
+  // console.log("Food item--------", foods);
   const { addToCart } = useOrder();
 
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const FoodDetail = () => {
           <div className="flex flex-col justify-center items-center h-screen">
             <div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10"
-              key={food.id}
+              key={food.title}
             >
               {/* left side  */}
               <div className="order-2 md:order-1 lg:order-1 flex flex-col justify-center">
@@ -85,7 +85,7 @@ const FoodDetail = () => {
                         "success"
                       );
                       navigate("/orders");
-                      console.log(food);
+                      // console.log(food);
                     }}
                   >
                     <BsCart2 className="text-xl" />

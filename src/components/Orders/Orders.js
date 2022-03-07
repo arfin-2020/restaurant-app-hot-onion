@@ -15,7 +15,7 @@ const Orders = () => {
     console.log('order------', order);
 
     return (
-        <div className='h-screen banner'>
+        <div className='h-screen banner overflow-hidden'>
             <div className="max-w-screen-xl py-20 mx-auto px-6">
         <Back />
         {order.length > 0 ? (
