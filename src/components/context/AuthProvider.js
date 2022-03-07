@@ -12,7 +12,7 @@ export const useAuth = () =>{
     return useContext(AuthContext);
 }
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState();
+    const [currentUser, setCurrentUser] = useState({});
     const [isLoading, setLoading] = useState(true);
     const auth = getAuth();
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ const AuthProvider = ({children}) => {
 
      useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, user=>{
-            setUser(user)
+            setCurrentUser(user)
         })
         setLoading(false);
         return unsubscribe;
@@ -29,36 +29,86 @@ const AuthProvider = ({children}) => {
 
     const signInWithGoogle = async() =>{
         setLoading(true)
-       return await signInWithPopup(auth,googleProvider)
+        await signInWithPopup(auth,googleProvider)
         .then((result)=>{
-            console.log(result.user)
-            setUser(result.user)
+            // console.log(result.user)
+            
+              setCurrentUser(result.user)
             setLoading(false)
-            
-            
         })
+        .finally(()=>setLoading(false));
         
     }
 
+
+    // const signUpWithEmailPassword = async (username, email, password) => {
+    //     setLoading(true)
+    //     await createUserWithEmailAndPassword(auth, email, password);
+    //     const loggedInUser = {
+    //       name: username,
+    //       email: email,
+    //     };
+    //     setLoading(false)
+    //     setCurrentUser(loggedInUser);
+        
+    //   };
+    //     // VerifyEmail
+    //     const emailVerification = () =>{
+    //         sendEmailVerification(auth.currentUser)
+    //     .then(() => {
+    //         console.log('Email verification sent!')
+            
+    //     });
+    //     }
+    //     // Reset Password
+    //     const resetPassword = async(email) =>{
+    //     await sendPasswordResetEmail(auth, email)
+    //         .then(() => {
+    //         console.log("Password reset email sent!");
+    //         })
+            
+    //     }
+
+    //     const logInWithEmailPassword = async(email, password) =>{
+    //         setLoading(true)
+    //         return signInWithEmailAndPassword(auth, email, password)
+    //          .then((userCredential) => {
+    //             setLoading(false)
+    //            const {displayName, email} = userCredential.user;
+    //            const loggedInUser ={
+    //              name: displayName,
+    //              email:email
+    //            }
+    //            setCurrentUser({...loggedInUser})
+    //            setLoading(false)
+    //          })
+             
+    //        }
     const logOut = () =>{
         setLoading(true)
         signOut(auth)
         .then(()=>{
             setLoading(false)
             // console.log('signOut successfull');
-            setUser('');
+            setCurrentUser('');
             navigate('/')
             toast.info("You are successfully Logout", {
                 theme: "colored"
               })
         })
+        .finally(()=>setLoading(false));
     }
 
     const value = {
-        user,
+        currentUser,
         signInWithGoogle,
         logOut,
-        isLoading 
+        isLoading,
+        // signUpWithEmailPassword,
+        // emailVerification,
+        // logInWithEmailPassword,
+        // resetPassword
+
     }
     return <AuthContext.Provider  value={value}>{children}</AuthContext.Provider>
 };

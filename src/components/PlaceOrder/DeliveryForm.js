@@ -1,18 +1,19 @@
 
 import React, { useState } from 'react';
 import swal from 'sweetalert';
+import { useAuth } from '../context/AuthProvider';
 import { useDelivery } from '../context/DeliveryProvider';
 import TextField from '../Form/TextField';
 
 const DeliveryForm = () => {
-    // const {user} = useAuth();
+    const {currentUser} = useAuth();
 
     const [change, setChange] = useState({
         country: '',
         roadNo: '',
         flatno:'',
-        // name:`${user.displayName}`
-        name:''
+        name:`${currentUser.displayName}`
+      
     })
     const {setInput, setDisabled} = useDelivery();
 
