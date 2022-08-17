@@ -9,4 +9,4 @@
 - React-router-dom.
 - Tailwin CSS
 
-## live Preview Link : https://red-onion-food-95aa3.web.app/
+## live Preview Link : https://red-onion-restaurant-41dbe.web.app/
